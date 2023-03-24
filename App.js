@@ -22,6 +22,7 @@ import LargeMed from './Components/LargeMed';
 import Calendars from './Components/Calendars';
 import Setting from './Components/Setting';
 import {BleManager} from 'react-native-ble-plx'
+import { ScrollView } from 'react-native-gesture-handler';
 
 
 
@@ -44,11 +45,16 @@ function Medications({navigation}) {
     <View style={styles.container}>
       <MedHeader/>
       <TextInput style={styles.input}
-        placeholder="John Doe"
+        placeholder="Notes"
         onSubmitEditing={(value) => setName(value.nativeEvent.text)}
       />
-      <Text style={styles.text1}>{name} </Text>
-      
+
+      <View style={{height: 220}}>
+        <ScrollView style={styles.scrollview1}>
+          <Text style={styles.text1}onPress={() => navigation.navigate('Notes',{paramkey: name})}>{name} </Text>
+        </ScrollView>
+      </View>
+
       <Button4 text = 'edit meds' onPress={() => navigation.navigate('EditMeds')}/>
       <Button5 text = 'Calendars' onPress={() => navigation.navigate('Calendar')}/>
     </View>
@@ -106,7 +112,16 @@ function Settings({navigation}) {
 function Bluetooth({navigation}) {
   return (
     <View style={styles.container}>
-      <Calendars/>
+
+    </View>
+  );
+}
+function Notes({route}) {
+  return (
+    <View style={styles.container}>
+      <ScrollView style={styles.scrollview1}>
+        <Text style={styles.text2}>{route.params.paramkey}</Text>
+        </ScrollView>
     </View>
   );
 }
@@ -154,6 +169,10 @@ function App() {
         component={Bluetooth} 
         options={{title: 'Bluetooth'}}
         />
+        <Stack.Screen name="Notes" 
+        component={Notes} 
+        options={{title: 'Notes'}}
+        />
 
       </Stack.Navigator>
     </NavigationContainer>
@@ -169,15 +188,21 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 50,
+    fontSeize: 15,
     margin: 10,
     borderWidth: 1,
     padding: 10,
   },
   text1: {
-    fontSize: 40,
+    fontSize: 15,
     fontWeight: 'bold',
-    left: 5,
-    //textAlign: 'center',
-    //justifyContent: 'center',
+    margin: 5,
+    padding: 10,
+    top: -10,
+  },
+  text2: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    margin: 10,
   },
 });

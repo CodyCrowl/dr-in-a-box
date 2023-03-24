@@ -12,7 +12,7 @@ export default function LargeMed(text){
 const styles = StyleSheet.create({
     header: {
         height: 80,
-        paddingTop:30,
+        paddingTop:20,
         paddingBottom:0,
         backgroundColor: '#03CEA4',
         borderWidth: 1,
