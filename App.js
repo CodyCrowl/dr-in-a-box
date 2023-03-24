@@ -1,5 +1,5 @@
-import React from 'react';
-import { Alert, SafeAreaView, StyleSheet, Text, View,} from 'react-native';
+import React, {useState} from 'react';
+import { Alert, SafeAreaView, StyleSheet, Text, View, TextInput} from 'react-native';
 import Button from './button';
 import Button2 from './button2';
 import Button3 from './button3';
@@ -24,6 +24,7 @@ import Setting from './Components/Setting';
 import {BleManager} from 'react-native-ble-plx'
 
 
+
 function HomeScreen({navigation}) {
   return (
     <View style={styles.container}>
@@ -36,10 +37,19 @@ function HomeScreen({navigation}) {
 }
 
 function Medications({navigation}) {
+  //const [text, onChangeText] = React.useState('Useless Text');
+  //const [number, onChangeNumber] = React.useState('');
+  const [name, setName] = useState("");
   return (
     <View style={styles.container}>
       <MedHeader/>
-      <Button4 text = 'edit  meds' onPress={() => navigation.navigate('EditMeds')}/>
+      <TextInput style={styles.input}
+        placeholder="John Doe"
+        onSubmitEditing={(value) => setName(value.nativeEvent.text)}
+      />
+      <Text style={styles.text1}>{name} </Text>
+      
+      <Button4 text = 'edit meds' onPress={() => navigation.navigate('EditMeds')}/>
       <Button5 text = 'Calendars' onPress={() => navigation.navigate('Calendar')}/>
     </View>
   );
@@ -156,5 +166,18 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "hsl(194, 77%, 35%)",
     flex: 1,
-  }
+  },
+  input: {
+    height: 50,
+    margin: 10,
+    borderWidth: 1,
+    padding: 10,
+  },
+  text1: {
+    fontSize: 40,
+    fontWeight: 'bold',
+    left: 5,
+    //textAlign: 'center',
+    //justifyContent: 'center',
+  },
 });
