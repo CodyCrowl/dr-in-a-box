@@ -25,7 +25,6 @@ import {BleManager} from 'react-native-ble-plx'
 import { ScrollView } from 'react-native-gesture-handler';
 
 
-
 function HomeScreen({navigation}) {
   return (
     <View style={styles.container}>
@@ -72,9 +71,204 @@ function EditMeds({navigation}) {
   );
 }
 function MedA({navigation}) {
+  const [name, setName] = useState("");
+  const [nPills, setPills] = useState("");
+  const [Dose, setDose] = useState("");
+  const [Hour, setHour] = useState("");
+  const [Minute, setMinute] = useState("");
+
+  function minutefix(time)
+  { 
+    if(time > "59"){
+      return "59";
+    }
+    if(time <= "0"){
+      return "00";
+    }
+    if(time == 1){
+      return "01";
+    }
+    if(time == 2){
+      return "02";
+    }
+    if(time == 3){
+      return "03";
+    }
+    if(time == 4){
+      return "04";
+    }
+    if(time == 5){
+      return "05";
+    }
+    if(time == 6){
+      return "06";
+    }
+    if(time == 7){
+      return "07";
+    }
+    if(time == 8){
+      return "08";
+    }
+    if(time == 9){
+      return "09";
+    }
+    else{
+      return time;
+    }
+  }
+  function Hourfix(time)
+  { 
+    if(time == "22"){
+      return "10";
+    }
+    if(time == "21"){
+      return "9";
+    }
+    if(time == "20"){
+      return "8";
+    }
+    if(time == "19"){
+      return "7";
+    }
+    if(time == "18"){
+      return "6";
+    }
+    if(time == "17"){
+      return "5";
+    }
+    if(time == "16"){
+      return "4";
+    }
+    if(time == "15"){
+      return "3";
+    }
+    if(time == "14"){
+      return "2";
+    }
+    if(time == "13"){
+      return "1";
+    }
+    if(time == "12"){
+      return "12";
+    }
+    if(time == "11"){
+      return "11";
+    }
+    if(time == "10"){
+      return "10";
+    }
+    if(time == "9"){
+      return "9";
+    }
+    if(time == "8"){
+      return "8";
+    }
+    if(time == "7"){
+      return "7";
+    }
+    if(time == "6"){
+      return "6";
+    }
+    if(time == "5"){
+      return "5";
+    }
+    if(time == "4"){
+      return "4";
+    }
+    if(time == "3"){
+      return "3";
+    }
+    if(time == "2"){
+      return "2";
+    }
+    if(time == "1"){
+      return "1";
+    }
+    if(time <= "0"){
+      return "12";
+    }
+    if(time <="031" || time > "031"){
+      return "00";
+    }
+    if(time >= "23"){
+      return "11";
+    }
+    else{
+      return time;
+    }
+  }
+  function am(time){
+    switch(time){
+      case "0": return "AM";
+      case "1": return "AM";
+      case "2": return "AM";
+      case "3": return "AM";
+      case "4": return "AM";
+      case "5": return "AM";
+      case "6": return "AM";
+      case "7": return "AM";
+      case "8": return "AM";
+      case "9": return "AM";
+      case "10": return "AM";
+      case "11": return "AM";
+      case "12": return "PM";
+      case "13": return "PM";
+      case "14": return "PM";
+      case "15": return "PM";
+      case "16": return "PM";
+      case "16": return "PM";
+      case "17": return "PM";
+      case "18": return "PM";
+      case "19": return "PM";
+      case "20": return "PM";
+      case "21": return "PM";
+      case "22": return "PM";
+      case "23": return "PM";
+    }
+  };
+
   return (
     <View style={styles.container}>
-      <SmallMed/>
+      <SmallMed text = {name}/>
+      <TextInput style={styles.input2}
+        placeholder="''Name of medicine here''"
+        onSubmitEditing={(value) => setName(value.nativeEvent.text)}
+      />
+      <TextInput style={styles.input2}
+        placeholder="''Number of Pills being added to Dispenser''"
+        onSubmitEditing={(value) => setPills(value.nativeEvent.text)}
+      />
+      <TextInput style={styles.input2}
+        placeholder="''Pills per dosage''"
+        onSubmitEditing={(value) => setDose(value.nativeEvent.text)}
+      />
+      <TextInput style={styles.input3}
+        placeholder="''Hour to take pill''"
+        onSubmitEditing={(value) => setHour(value.nativeEvent.text)}
+      />
+      <TextInput style={styles.input4}
+        placeholder="''Minute to take pill''"
+        onSubmitEditing={(value) => setMinute(value.nativeEvent.text)}
+      />
+
+
+      <Text style={styles.text3}numberOfLines={1} ellipsizeMode='tail'> 
+        {name}
+      </Text>
+
+      <Text style={styles.text4}numberOfLines={1} ellipsizeMode='tail'> 
+        {nPills} pills total
+      </Text>
+
+      <Text style={styles.text4}numberOfLines={1} ellipsizeMode='tail'> 
+        {Dose} per dosage
+      </Text>
+
+      <Text style={styles.text4}numberOfLines={1} ellipsizeMode='tail'> 
+      Time for med - {Hourfix(Hour)} : {minutefix(Minute)} {am(Hour)}
+      </Text>    
+
+
     </View>
   );
 }
@@ -193,6 +387,34 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
   },
+  input2: {
+    height: 50,
+    fontSeize: 15,
+    margin: 8,
+    backgroundColor: '#03CEA4',
+    borderWidth: 1,
+    padding: 10,
+  },
+  input3: {
+    height: 50,
+    width: 180,
+    fontSeize: 15,
+    margin: 8,
+    backgroundColor: '#03CEA4',
+    borderWidth: 1,
+    padding: 10,
+  },
+  input4: {
+    height: 50,
+    width: 180,
+    fontSeize: 15,
+    margin: 8,
+    backgroundColor: '#03CEA4',
+    borderWidth: 1,
+    padding: 10,
+    left: 215,
+    top: -66,
+  },
   text1: {
     fontSize: 15,
     fontWeight: 'bold',
@@ -204,5 +426,30 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     margin: 10,
+  },
+  text3: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    margin: 1,
+    //padding: 10,
+    top: -70,
+    textDecorationLine: 'underline',
+    left: 7,
+  },
+  text4: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    margin: 1,
+    //padding: 10,
+    top: -70,
+    left: 7
+  },
+  text4: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    margin: 1,
+    //padding: 10,
+    top: -70,
+    left: 7
   },
 });

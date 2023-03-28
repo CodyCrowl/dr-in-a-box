@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View, borderColor} from 'react-native';
 
-export default function SmallMed(text){
+export default function SmallMed({text}){
     return(
         <View style={styles.header}>
-            <Text style={styles.title}>Small Medication</Text>
+            <Text style={styles.title}>{text}</Text>
         </View>
     )
 }
