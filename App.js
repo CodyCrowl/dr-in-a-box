@@ -23,6 +23,7 @@ import Calendars from './Components/Calendars';
 import Setting from './Components/Setting';
 import {BleManager} from 'react-native-ble-plx'
 import { ScrollView } from 'react-native-gesture-handler';
+import { Colors } from './Components/colors';
 
 
 function HomeScreen({navigation}) {
@@ -76,7 +77,103 @@ function MedA({navigation}) {
   const [Dose, setDose] = useState("");
   const [Hour, setHour] = useState("");
   const [Minute, setMinute] = useState("");
+  var monday = false;
+  var tuesday = false;
+  var wednesday = false;
+  var thursday = false;
+  var friday = false;
+  var saturday = false;
+  var sunday = false;
+  var colorm = '#FF0000';
+  var colort = "#FF0000";
+  var colorw = "#FF0000";
+  var colorth = "#FF0000";
+  var colorf = "#FF0000";
+  var colors = "#FF0000";
+  var colorsu = "#FF0000";
 
+
+  function colorM()
+  {
+    if(monday == true)
+    {
+      colorm = '#00FF00';
+    }
+    else
+    {
+      return '#FF0000';
+    }
+  }
+  function Monday()
+  {
+    if(monday == true)
+    {
+      monday = false;
+    }
+    else{
+      monday == true;
+    }
+  }
+  function Tuesday()
+  {
+    if(tuesday == true)
+    {
+      tuesday = false;
+    }
+    else{
+      tuesday == true;
+    }
+  }
+  function Wednesday()
+  {
+    if(wednesday == true)
+    {
+      wednesday = false;
+    }
+    else{
+      wednesday == true;
+    }
+  }
+  function Thursday()
+  {
+    if(thursday == true)
+    {
+      thursday = false;
+    }
+    else{
+      thursday == true;
+    }
+  }
+  function Friday()
+  {
+    if(friday == true)
+    {
+      friday = false;
+    }
+    else{
+      friday == true;
+    }
+  }
+  function Saturday()
+  {
+    if(saturday == true)
+    {
+      saturday = false;
+    }
+    else{
+      saturday == true;
+    }
+  }
+  function Sunday()
+  {
+    if(sunday == true)
+    {
+      sunday = false;
+    }
+    else{
+      sunday == true;
+    }
+  }
   function minutefix(time)
   { 
     if(time > "59"){
@@ -269,6 +366,7 @@ function MedA({navigation}) {
       </Text>    
 
 
+     
     </View>
   );
 }
