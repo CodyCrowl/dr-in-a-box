@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Alert, SafeAreaView, StyleSheet, Text, View, TextInput} from 'react-native';
+import { Alert, SafeAreaView, StyleSheet, Text, View, TextInput,TouchableOpacity, Pressable} from 'react-native';
 import Button from './button';
 import Button2 from './button2';
 import Button3 from './button3';
@@ -77,7 +77,9 @@ function MedA({navigation}) {
   const [Dose, setDose] = useState("");
   const [Hour, setHour] = useState("");
   const [Minute, setMinute] = useState("");
-  var monday = false;
+  const [monday, setCheck] = useState(false);
+
+  
   var tuesday = false;
   var wednesday = false;
   var thursday = false;
@@ -92,26 +94,17 @@ function MedA({navigation}) {
   var colors = "#FF0000";
   var colorsu = "#FF0000";
 
+  const handleToggle = () =>  setCheck(value => !value);
 
   function colorM()
   {
     if(monday == true)
     {
-      colorm = '#00FF00';
+      return '#00FF00';
     }
     else
     {
       return '#FF0000';
-    }
-  }
-  function Monday()
-  {
-    if(monday == true)
-    {
-      monday = false;
-    }
-    else{
-      monday == true;
     }
   }
   function Tuesday()
@@ -363,10 +356,29 @@ function MedA({navigation}) {
 
       <Text style={styles.text4}numberOfLines={1} ellipsizeMode='tail'> 
       Time for med - {Hourfix(Hour)} : {minutefix(Minute)} {am(Hour)}
-      </Text>    
+      </Text>   
 
 
-     
+
+
+      <View style={
+        {    
+          height: 50,
+          width: 90,
+          fontSeize: 15,
+          margin: 8,
+          backgroundColor: colorM(),
+          borderWidth: 1,
+          padding: 10,
+          justifyContent: 'center',
+        }}>
+        <TouchableOpacity style={styles.button} onPress={handleToggle}>
+        <Text>Monday</Text>
+        </TouchableOpacity>
+        
+      </View>
+
+
     </View>
   );
 }
