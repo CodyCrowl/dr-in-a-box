@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View, borderColor} from 'react-native';
 
-export default function MediumMed(text){
+export default function MediumMed({text}){
     return(
         <View style={styles.header}>
-            <Text style={styles.title}>Medium Medication</Text>
+            <Text style={styles.title}>{text}</Text>
         </View>
     )
 }

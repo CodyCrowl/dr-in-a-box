@@ -24,7 +24,7 @@ import Setting from './Components/Setting';
 import {BleManager} from 'react-native-ble-plx'
 import { ScrollView } from 'react-native-gesture-handler';
 import { Colors } from './Components/colors';
-
+import PhotoButton from './PhotoButton';
 
 function HomeScreen({navigation}) {
   return (
@@ -33,6 +33,7 @@ function HomeScreen({navigation}) {
       <Button text = 'Medications' onPress={() => navigation.navigate('Medications')}/>
       <Button2 text = 'Settings' onPress={() => navigation.navigate('Settings')}/>
       <Button3 text = 'Dispense' onPress={(Alert)}/>
+      <PhotoButton text = 'Facial recognition' onPress={(Alert)}/>
     </View>
   );
 }
@@ -77,24 +78,21 @@ function MedA({navigation}) {
   const [Dose, setDose] = useState("");
   const [Hour, setHour] = useState("");
   const [Minute, setMinute] = useState("");
-  const [monday, setCheck] = useState(false);
+  const [monday, setMonday] = useState(false);
+  const [tuesday, setTuesday] = useState(false);
+  const [wednesday, setWednesday] = useState(false);
+  const [thursday, setThursday] = useState(false);
+  const [friday, setFriday] = useState(false);
+  const [saturday, setSaturday] = useState(false);
+  const [sunday, setSunday] = useState(false);
 
-  
-  var tuesday = false;
-  var wednesday = false;
-  var thursday = false;
-  var friday = false;
-  var saturday = false;
-  var sunday = false;
-  var colorm = '#FF0000';
-  var colort = "#FF0000";
-  var colorw = "#FF0000";
-  var colorth = "#FF0000";
-  var colorf = "#FF0000";
-  var colors = "#FF0000";
-  var colorsu = "#FF0000";
-
-  const handleToggle = () =>  setCheck(value => !value);
+  const mToggle = () => setMonday(value => !value);
+  const tToggle = () => setTuesday(value => !value);
+  const wToggle = () => setWednesday(value => !value);
+  const thToggle = () => setThursday(value => !value);
+  const fToggle = () => setFriday(value => !value);
+  const sToggle = () => setSaturday(value => !value);
+  const suToggle = () => setSunday(value => !value);
 
   function colorM()
   {
@@ -107,66 +105,75 @@ function MedA({navigation}) {
       return '#FF0000';
     }
   }
-  function Tuesday()
+  function colorT()
   {
     if(tuesday == true)
     {
-      tuesday = false;
+      return '#00FF00';
     }
-    else{
-      tuesday == true;
+    else
+    {
+      return '#FF0000';
     }
   }
-  function Wednesday()
+  function colorW()
   {
     if(wednesday == true)
     {
-      wednesday = false;
+      return '#00FF00';
     }
-    else{
-      wednesday == true;
+    else
+    {
+      return '#FF0000';
     }
   }
-  function Thursday()
+  function colorTh()
   {
     if(thursday == true)
     {
-      thursday = false;
+      return '#00FF00';
     }
-    else{
-      thursday == true;
+    else
+    {
+      return '#FF0000';
     }
   }
-  function Friday()
+  function colorF()
   {
     if(friday == true)
     {
-      friday = false;
+      return '#00FF00';
     }
-    else{
-      friday == true;
+    else
+    {
+      return '#FF0000';
     }
   }
-  function Saturday()
+  function colorS()
   {
     if(saturday == true)
     {
-      saturday = false;
+      return '#00FF00';
     }
-    else{
-      saturday == true;
+    else
+    {
+      return '#FF0000';
     }
   }
-  function Sunday()
+  function colorSu()
   {
     if(sunday == true)
     {
-      sunday = false;
+      return '#00FF00';
     }
-    else{
-      sunday == true;
+    else
+    {
+      return '#FF0000';
     }
   }
+
+
+
   function minutefix(time)
   { 
     if(time > "59"){
@@ -359,40 +366,1125 @@ function MedA({navigation}) {
       </Text>   
 
 
-
+      <View style={
+        {    
+          height: 30,
+          fontSeize: 15,
+          margin: 85,
+          backgroundColor: '#03CEA4',
+          borderWidth: 1,
+          top: -140,
+          padding: 2,
+          textAlign: 'center',
+          justifyContent: 'center',
+        }}>
+        <Text style={{
+          textAlign: 'center',
+          justifyContent: 'center',
+          textDecorationLine: 'underline'
+          }}>
+          Days to Dispense. Click all that apply
+        </Text>
+        
+      </View>
 
       <View style={
         {    
           height: 50,
-          width: 90,
+          width: 85,
           fontSeize: 15,
           margin: 8,
           backgroundColor: colorM(),
           borderWidth: 1,
           padding: 10,
           justifyContent: 'center',
+          top: -220,
+          borderTopLeftRadius:8,
+          borderTopRightRadius:8,
+          borderBottomLeftRadius:8,
+          borderBottomRightRadius:8,
         }}>
-        <TouchableOpacity style={styles.button} onPress={handleToggle}>
+        <TouchableOpacity style={styles.button} onPress={mToggle}>
         <Text>Monday</Text>
         </TouchableOpacity>
-        
       </View>
 
+      <View style={
+        {    
+          height: 50,
+          width: 85,
+          fontSeize: 15,
+          margin: 8,
+          backgroundColor: colorT(),
+          borderWidth: 1,
+          padding: 10,
+          justifyContent: 'center',
+          top: -286,
+          left: 101,
+          borderTopLeftRadius:8,
+          borderTopRightRadius:8,
+          borderBottomLeftRadius:8,
+          borderBottomRightRadius:8,
+        }}>
+        <TouchableOpacity style={styles.button} onPress={tToggle}>
+        <Text>Tuesday</Text>
+        </TouchableOpacity>      
+      </View>
+
+      <View style={
+        {    
+          height: 50,
+          width: 94,
+          fontSeize: 15,
+          margin: 8,
+          backgroundColor: colorW(),
+          borderWidth: 1,
+          padding: 10,
+          justifyContent: 'center',
+          top: -352,
+          left: 202,
+          borderTopLeftRadius:8,
+          borderTopRightRadius:8,
+          borderBottomLeftRadius:8,
+          borderBottomRightRadius:8,
+        }}>
+        <TouchableOpacity style={styles.button} onPress={wToggle}>
+        <Text>Wednesday</Text>
+        </TouchableOpacity>      
+      </View>
+
+      <View style={
+        {    
+          height: 50,
+          width: 85,
+          fontSeize: 15,
+          margin: 8,
+          backgroundColor: colorTh(),
+          borderWidth: 1,
+          padding: 10,
+          justifyContent: 'center',
+          top: -418,
+          left: 312,
+          borderTopLeftRadius:8,
+          borderTopRightRadius:8,
+          borderBottomLeftRadius:8,
+          borderBottomRightRadius:8,
+        }}>
+        <TouchableOpacity style={styles.button} onPress={thToggle}>
+        <Text>Thursday</Text>
+        </TouchableOpacity>      
+      </View>
+
+      <View style={
+        {    
+          height: 50,
+          width: 85,
+          fontSeize: 15,
+          margin: 8,
+          backgroundColor: colorF(),
+          borderWidth: 1,
+          padding: 10,
+          justifyContent: 'center',
+          top: -418,
+          left: 50,
+          borderTopLeftRadius:8,
+          borderTopRightRadius:8,
+          borderBottomLeftRadius:8,
+          borderBottomRightRadius:8,
+        }}>
+        <TouchableOpacity style={styles.button} onPress={fToggle}>
+        <Text>Friday</Text>
+        </TouchableOpacity>      
+      </View>
+
+      <View style={
+        {    
+          height: 50,
+          width: 85,
+          fontSeize: 15,
+          margin: 8,
+          backgroundColor: colorS(),
+          borderWidth: 1,
+          padding: 10,
+          justifyContent: 'center',
+          top: -484,
+          left: 151,
+          borderTopLeftRadius:8,
+          borderTopRightRadius:8,
+          borderBottomLeftRadius:8,
+          borderBottomRightRadius:8,
+        }}>
+        <TouchableOpacity style={styles.button} onPress={sToggle}>
+        <Text>Saturday</Text>
+        </TouchableOpacity>      
+      </View>
+
+      <View style={
+        {    
+          height: 50,
+          width: 85,
+          fontSeize: 15,
+          margin: 8,
+          backgroundColor: colorSu(),
+          borderWidth: 1,
+          padding: 10,
+          justifyContent: 'center',
+          top: -550,
+          left: 252,
+          borderTopLeftRadius:8,
+          borderTopRightRadius:8,
+          borderBottomLeftRadius:8,
+          borderBottomRightRadius:8,
+        }}>
+        <TouchableOpacity style={styles.button} onPress={suToggle}>
+        <Text>Sunday</Text>
+        </TouchableOpacity>      
+      </View>
 
     </View>
   );
 }
 function MedB({navigation}) {
+  const [name, setName] = useState("");
+  const [nPills, setPills] = useState("");
+  const [Dose, setDose] = useState("");
+  const [Hour, setHour] = useState("");
+  const [Minute, setMinute] = useState("");
+  const [monday, setMonday] = useState(false);
+  const [tuesday, setTuesday] = useState(false);
+  const [wednesday, setWednesday] = useState(false);
+  const [thursday, setThursday] = useState(false);
+  const [friday, setFriday] = useState(false);
+  const [saturday, setSaturday] = useState(false);
+  const [sunday, setSunday] = useState(false);
+
+  const mToggle = () => setMonday(value => !value);
+  const tToggle = () => setTuesday(value => !value);
+  const wToggle = () => setWednesday(value => !value);
+  const thToggle = () => setThursday(value => !value);
+  const fToggle = () => setFriday(value => !value);
+  const sToggle = () => setSaturday(value => !value);
+  const suToggle = () => setSunday(value => !value);
+
+  function colorM()
+  {
+    if(monday == true)
+    {
+      return '#00FF00';
+    }
+    else
+    {
+      return '#FF0000';
+    }
+  }
+  function colorT()
+  {
+    if(tuesday == true)
+    {
+      return '#00FF00';
+    }
+    else
+    {
+      return '#FF0000';
+    }
+  }
+  function colorW()
+  {
+    if(wednesday == true)
+    {
+      return '#00FF00';
+    }
+    else
+    {
+      return '#FF0000';
+    }
+  }
+  function colorTh()
+  {
+    if(thursday == true)
+    {
+      return '#00FF00';
+    }
+    else
+    {
+      return '#FF0000';
+    }
+  }
+  function colorF()
+  {
+    if(friday == true)
+    {
+      return '#00FF00';
+    }
+    else
+    {
+      return '#FF0000';
+    }
+  }
+  function colorS()
+  {
+    if(saturday == true)
+    {
+      return '#00FF00';
+    }
+    else
+    {
+      return '#FF0000';
+    }
+  }
+  function colorSu()
+  {
+    if(sunday == true)
+    {
+      return '#00FF00';
+    }
+    else
+    {
+      return '#FF0000';
+    }
+  }
+
+
+
+  function minutefix(time)
+  { 
+    if(time > "59"){
+      return "59";
+    }
+    if(time <= "0"){
+      return "00";
+    }
+    if(time == 1){
+      return "01";
+    }
+    if(time == 2){
+      return "02";
+    }
+    if(time == 3){
+      return "03";
+    }
+    if(time == 4){
+      return "04";
+    }
+    if(time == 5){
+      return "05";
+    }
+    if(time == 6){
+      return "06";
+    }
+    if(time == 7){
+      return "07";
+    }
+    if(time == 8){
+      return "08";
+    }
+    if(time == 9){
+      return "09";
+    }
+    else{
+      return time;
+    }
+  }
+  function Hourfix(time)
+  { 
+    if(time == "22"){
+      return "10";
+    }
+    if(time == "21"){
+      return "9";
+    }
+    if(time == "20"){
+      return "8";
+    }
+    if(time == "19"){
+      return "7";
+    }
+    if(time == "18"){
+      return "6";
+    }
+    if(time == "17"){
+      return "5";
+    }
+    if(time == "16"){
+      return "4";
+    }
+    if(time == "15"){
+      return "3";
+    }
+    if(time == "14"){
+      return "2";
+    }
+    if(time == "13"){
+      return "1";
+    }
+    if(time == "12"){
+      return "12";
+    }
+    if(time == "11"){
+      return "11";
+    }
+    if(time == "10"){
+      return "10";
+    }
+    if(time == "9"){
+      return "9";
+    }
+    if(time == "8"){
+      return "8";
+    }
+    if(time == "7"){
+      return "7";
+    }
+    if(time == "6"){
+      return "6";
+    }
+    if(time == "5"){
+      return "5";
+    }
+    if(time == "4"){
+      return "4";
+    }
+    if(time == "3"){
+      return "3";
+    }
+    if(time == "2"){
+      return "2";
+    }
+    if(time == "1"){
+      return "1";
+    }
+    if(time <= "0"){
+      return "12";
+    }
+    if(time <="031" || time > "031"){
+      return "00";
+    }
+    if(time >= "23"){
+      return "11";
+    }
+    else{
+      return time;
+    }
+  }
+  function am(time){
+    switch(time){
+      case "0": return "AM";
+      case "1": return "AM";
+      case "2": return "AM";
+      case "3": return "AM";
+      case "4": return "AM";
+      case "5": return "AM";
+      case "6": return "AM";
+      case "7": return "AM";
+      case "8": return "AM";
+      case "9": return "AM";
+      case "10": return "AM";
+      case "11": return "AM";
+      case "12": return "PM";
+      case "13": return "PM";
+      case "14": return "PM";
+      case "15": return "PM";
+      case "16": return "PM";
+      case "16": return "PM";
+      case "17": return "PM";
+      case "18": return "PM";
+      case "19": return "PM";
+      case "20": return "PM";
+      case "21": return "PM";
+      case "22": return "PM";
+      case "23": return "PM";
+    }
+  };
+
   return (
     <View style={styles.container}>
-      <MediumMed/>
+      <MediumMed text = {name}/>
+      <TextInput style={styles.input2}
+        placeholder="''Name of medicine here''"
+        onSubmitEditing={(value) => setName(value.nativeEvent.text)}
+      />
+      <TextInput style={styles.input2}
+        placeholder="''Number of Pills being added to Dispenser''"
+        onSubmitEditing={(value) => setPills(value.nativeEvent.text)}
+      />
+      <TextInput style={styles.input2}
+        placeholder="''Pills per dosage''"
+        onSubmitEditing={(value) => setDose(value.nativeEvent.text)}
+      />
+      <TextInput style={styles.input3}
+        placeholder="''Hour to take pill''"
+        onSubmitEditing={(value) => setHour(value.nativeEvent.text)}
+      />
+      <TextInput style={styles.input4}
+        placeholder="''Minute to take pill''"
+        onSubmitEditing={(value) => setMinute(value.nativeEvent.text)}
+      />
+
+
+      <Text style={styles.text3}numberOfLines={1} ellipsizeMode='tail'> 
+        {name}
+      </Text>
+
+      <Text style={styles.text4}numberOfLines={1} ellipsizeMode='tail'> 
+        {nPills} pills total
+      </Text>
+
+      <Text style={styles.text4}numberOfLines={1} ellipsizeMode='tail'> 
+        {Dose} per dosage
+      </Text>
+
+      <Text style={styles.text4}numberOfLines={1} ellipsizeMode='tail'> 
+      Time for med - {Hourfix(Hour)} : {minutefix(Minute)} {am(Hour)}
+      </Text>   
+
+
+      <View style={
+        {    
+          height: 30,
+          fontSeize: 15,
+          margin: 85,
+          backgroundColor: '#03CEA4',
+          borderWidth: 1,
+          top: -140,
+          padding: 2,
+          textAlign: 'center',
+          justifyContent: 'center',
+        }}>
+        <Text style={{
+          textAlign: 'center',
+          justifyContent: 'center',
+          textDecorationLine: 'underline'
+          }}>
+          Days to Dispense. Click all that apply
+        </Text>
+        
+      </View>
+
+      <View style={
+        {    
+          height: 50,
+          width: 85,
+          fontSeize: 15,
+          margin: 8,
+          backgroundColor: colorM(),
+          borderWidth: 1,
+          padding: 10,
+          justifyContent: 'center',
+          top: -220,
+          borderTopLeftRadius:8,
+          borderTopRightRadius:8,
+          borderBottomLeftRadius:8,
+          borderBottomRightRadius:8,
+        }}>
+        <TouchableOpacity style={styles.button} onPress={mToggle}>
+        <Text>Monday</Text>
+        </TouchableOpacity>
+      </View>
+
+      <View style={
+        {    
+          height: 50,
+          width: 85,
+          fontSeize: 15,
+          margin: 8,
+          backgroundColor: colorT(),
+          borderWidth: 1,
+          padding: 10,
+          justifyContent: 'center',
+          top: -286,
+          left: 101,
+          borderTopLeftRadius:8,
+          borderTopRightRadius:8,
+          borderBottomLeftRadius:8,
+          borderBottomRightRadius:8,
+        }}>
+        <TouchableOpacity style={styles.button} onPress={tToggle}>
+        <Text>Tuesday</Text>
+        </TouchableOpacity>      
+      </View>
+
+      <View style={
+        {    
+          height: 50,
+          width: 94,
+          fontSeize: 15,
+          margin: 8,
+          backgroundColor: colorW(),
+          borderWidth: 1,
+          padding: 10,
+          justifyContent: 'center',
+          top: -352,
+          left: 202,
+          borderTopLeftRadius:8,
+          borderTopRightRadius:8,
+          borderBottomLeftRadius:8,
+          borderBottomRightRadius:8,
+        }}>
+        <TouchableOpacity style={styles.button} onPress={wToggle}>
+        <Text>Wednesday</Text>
+        </TouchableOpacity>      
+      </View>
+
+      <View style={
+        {    
+          height: 50,
+          width: 85,
+          fontSeize: 15,
+          margin: 8,
+          backgroundColor: colorTh(),
+          borderWidth: 1,
+          padding: 10,
+          justifyContent: 'center',
+          top: -418,
+          left: 312,
+          borderTopLeftRadius:8,
+          borderTopRightRadius:8,
+          borderBottomLeftRadius:8,
+          borderBottomRightRadius:8,
+        }}>
+        <TouchableOpacity style={styles.button} onPress={thToggle}>
+        <Text>Thursday</Text>
+        </TouchableOpacity>      
+      </View>
+
+      <View style={
+        {    
+          height: 50,
+          width: 85,
+          fontSeize: 15,
+          margin: 8,
+          backgroundColor: colorF(),
+          borderWidth: 1,
+          padding: 10,
+          justifyContent: 'center',
+          top: -418,
+          left: 50,
+          borderTopLeftRadius:8,
+          borderTopRightRadius:8,
+          borderBottomLeftRadius:8,
+          borderBottomRightRadius:8,
+        }}>
+        <TouchableOpacity style={styles.button} onPress={fToggle}>
+        <Text>Friday</Text>
+        </TouchableOpacity>      
+      </View>
+
+      <View style={
+        {    
+          height: 50,
+          width: 85,
+          fontSeize: 15,
+          margin: 8,
+          backgroundColor: colorS(),
+          borderWidth: 1,
+          padding: 10,
+          justifyContent: 'center',
+          top: -484,
+          left: 151,
+          borderTopLeftRadius:8,
+          borderTopRightRadius:8,
+          borderBottomLeftRadius:8,
+          borderBottomRightRadius:8,
+        }}>
+        <TouchableOpacity style={styles.button} onPress={sToggle}>
+        <Text>Saturday</Text>
+        </TouchableOpacity>      
+      </View>
+
+      <View style={
+        {    
+          height: 50,
+          width: 85,
+          fontSeize: 15,
+          margin: 8,
+          backgroundColor: colorSu(),
+          borderWidth: 1,
+          padding: 10,
+          justifyContent: 'center',
+          top: -550,
+          left: 252,
+          borderTopLeftRadius:8,
+          borderTopRightRadius:8,
+          borderBottomLeftRadius:8,
+          borderBottomRightRadius:8,
+        }}>
+        <TouchableOpacity style={styles.button} onPress={suToggle}>
+        <Text>Sunday</Text>
+        </TouchableOpacity>      
+      </View>
+
     </View>
   );
 }
 function MedC({navigation}) {
+  const [name, setName] = useState("");
+  const [nPills, setPills] = useState("");
+  const [Dose, setDose] = useState("");
+  const [Hour, setHour] = useState("");
+  const [Minute, setMinute] = useState("");
+  const [monday, setMonday] = useState(false);
+  const [tuesday, setTuesday] = useState(false);
+  const [wednesday, setWednesday] = useState(false);
+  const [thursday, setThursday] = useState(false);
+  const [friday, setFriday] = useState(false);
+  const [saturday, setSaturday] = useState(false);
+  const [sunday, setSunday] = useState(false);
+
+  const mToggle = () => setMonday(value => !value);
+  const tToggle = () => setTuesday(value => !value);
+  const wToggle = () => setWednesday(value => !value);
+  const thToggle = () => setThursday(value => !value);
+  const fToggle = () => setFriday(value => !value);
+  const sToggle = () => setSaturday(value => !value);
+  const suToggle = () => setSunday(value => !value);
+
+  function colorM()
+  {
+    if(monday == true)
+    {
+      return '#00FF00';
+    }
+    else
+    {
+      return '#FF0000';
+    }
+  }
+  function colorT()
+  {
+    if(tuesday == true)
+    {
+      return '#00FF00';
+    }
+    else
+    {
+      return '#FF0000';
+    }
+  }
+  function colorW()
+  {
+    if(wednesday == true)
+    {
+      return '#00FF00';
+    }
+    else
+    {
+      return '#FF0000';
+    }
+  }
+  function colorTh()
+  {
+    if(thursday == true)
+    {
+      return '#00FF00';
+    }
+    else
+    {
+      return '#FF0000';
+    }
+  }
+  function colorF()
+  {
+    if(friday == true)
+    {
+      return '#00FF00';
+    }
+    else
+    {
+      return '#FF0000';
+    }
+  }
+  function colorS()
+  {
+    if(saturday == true)
+    {
+      return '#00FF00';
+    }
+    else
+    {
+      return '#FF0000';
+    }
+  }
+  function colorSu()
+  {
+    if(sunday == true)
+    {
+      return '#00FF00';
+    }
+    else
+    {
+      return '#FF0000';
+    }
+  }
+
+
+
+  function minutefix(time)
+  { 
+    if(time > "59"){
+      return "59";
+    }
+    if(time <= "0"){
+      return "00";
+    }
+    if(time == 1){
+      return "01";
+    }
+    if(time == 2){
+      return "02";
+    }
+    if(time == 3){
+      return "03";
+    }
+    if(time == 4){
+      return "04";
+    }
+    if(time == 5){
+      return "05";
+    }
+    if(time == 6){
+      return "06";
+    }
+    if(time == 7){
+      return "07";
+    }
+    if(time == 8){
+      return "08";
+    }
+    if(time == 9){
+      return "09";
+    }
+    else{
+      return time;
+    }
+  }
+  function Hourfix(time)
+  { 
+    if(time == "22"){
+      return "10";
+    }
+    if(time == "21"){
+      return "9";
+    }
+    if(time == "20"){
+      return "8";
+    }
+    if(time == "19"){
+      return "7";
+    }
+    if(time == "18"){
+      return "6";
+    }
+    if(time == "17"){
+      return "5";
+    }
+    if(time == "16"){
+      return "4";
+    }
+    if(time == "15"){
+      return "3";
+    }
+    if(time == "14"){
+      return "2";
+    }
+    if(time == "13"){
+      return "1";
+    }
+    if(time == "12"){
+      return "12";
+    }
+    if(time == "11"){
+      return "11";
+    }
+    if(time == "10"){
+      return "10";
+    }
+    if(time == "9"){
+      return "9";
+    }
+    if(time == "8"){
+      return "8";
+    }
+    if(time == "7"){
+      return "7";
+    }
+    if(time == "6"){
+      return "6";
+    }
+    if(time == "5"){
+      return "5";
+    }
+    if(time == "4"){
+      return "4";
+    }
+    if(time == "3"){
+      return "3";
+    }
+    if(time == "2"){
+      return "2";
+    }
+    if(time == "1"){
+      return "1";
+    }
+    if(time <= "0"){
+      return "12";
+    }
+    if(time <="031" || time > "031"){
+      return "00";
+    }
+    if(time >= "23"){
+      return "11";
+    }
+    else{
+      return time;
+    }
+  }
+  function am(time){
+    switch(time){
+      case "0": return "AM";
+      case "1": return "AM";
+      case "2": return "AM";
+      case "3": return "AM";
+      case "4": return "AM";
+      case "5": return "AM";
+      case "6": return "AM";
+      case "7": return "AM";
+      case "8": return "AM";
+      case "9": return "AM";
+      case "10": return "AM";
+      case "11": return "AM";
+      case "12": return "PM";
+      case "13": return "PM";
+      case "14": return "PM";
+      case "15": return "PM";
+      case "16": return "PM";
+      case "16": return "PM";
+      case "17": return "PM";
+      case "18": return "PM";
+      case "19": return "PM";
+      case "20": return "PM";
+      case "21": return "PM";
+      case "22": return "PM";
+      case "23": return "PM";
+    }
+  };
+
   return (
     <View style={styles.container}>
-      <LargeMed/>
+      <LargeMed text = {name}/>
+      <TextInput style={styles.input2}
+        placeholder="''Name of medicine here''"
+        onSubmitEditing={(value) => setName(value.nativeEvent.text)}
+      />
+      <TextInput style={styles.input2}
+        placeholder="''Number of Pills being added to Dispenser''"
+        onSubmitEditing={(value) => setPills(value.nativeEvent.text)}
+      />
+      <TextInput style={styles.input2}
+        placeholder="''Pills per dosage''"
+        onSubmitEditing={(value) => setDose(value.nativeEvent.text)}
+      />
+      <TextInput style={styles.input3}
+        placeholder="''Hour to take pill''"
+        onSubmitEditing={(value) => setHour(value.nativeEvent.text)}
+      />
+      <TextInput style={styles.input4}
+        placeholder="''Minute to take pill''"
+        onSubmitEditing={(value) => setMinute(value.nativeEvent.text)}
+      />
+
+
+      <Text style={styles.text3}numberOfLines={1} ellipsizeMode='tail'> 
+        {name}
+      </Text>
+
+      <Text style={styles.text4}numberOfLines={1} ellipsizeMode='tail'> 
+        {nPills} pills total
+      </Text>
+
+      <Text style={styles.text4}numberOfLines={1} ellipsizeMode='tail'> 
+        {Dose} per dosage
+      </Text>
+
+      <Text style={styles.text4}numberOfLines={1} ellipsizeMode='tail'> 
+      Time for med - {Hourfix(Hour)} : {minutefix(Minute)} {am(Hour)}
+      </Text>   
+
+
+      <View style={
+        {    
+          height: 30,
+          fontSeize: 15,
+          margin: 85,
+          backgroundColor: '#03CEA4',
+          borderWidth: 1,
+          top: -140,
+          padding: 2,
+          textAlign: 'center',
+          justifyContent: 'center',
+        }}>
+        <Text style={{
+          textAlign: 'center',
+          justifyContent: 'center',
+          textDecorationLine: 'underline'
+          }}>
+          Days to Dispense. Click all that apply
+        </Text>
+        
+      </View>
+
+      <View style={
+        {    
+          height: 50,
+          width: 85,
+          fontSeize: 15,
+          margin: 8,
+          backgroundColor: colorM(),
+          borderWidth: 1,
+          padding: 10,
+          justifyContent: 'center',
+          top: -220,
+          borderTopLeftRadius:8,
+          borderTopRightRadius:8,
+          borderBottomLeftRadius:8,
+          borderBottomRightRadius:8,
+        }}>
+        <TouchableOpacity style={styles.button} onPress={mToggle}>
+        <Text>Monday</Text>
+        </TouchableOpacity>
+      </View>
+
+      <View style={
+        {    
+          height: 50,
+          width: 85,
+          fontSeize: 15,
+          margin: 8,
+          backgroundColor: colorT(),
+          borderWidth: 1,
+          padding: 10,
+          justifyContent: 'center',
+          top: -286,
+          left: 101,
+          borderTopLeftRadius:8,
+          borderTopRightRadius:8,
+          borderBottomLeftRadius:8,
+          borderBottomRightRadius:8,
+        }}>
+        <TouchableOpacity style={styles.button} onPress={tToggle}>
+        <Text>Tuesday</Text>
+        </TouchableOpacity>      
+      </View>
+
+      <View style={
+        {    
+          height: 50,
+          width: 94,
+          fontSeize: 15,
+          margin: 8,
+          backgroundColor: colorW(),
+          borderWidth: 1,
+          padding: 10,
+          justifyContent: 'center',
+          top: -352,
+          left: 202,
+          borderTopLeftRadius:8,
+          borderTopRightRadius:8,
+          borderBottomLeftRadius:8,
+          borderBottomRightRadius:8,
+        }}>
+        <TouchableOpacity style={styles.button} onPress={wToggle}>
+        <Text>Wednesday</Text>
+        </TouchableOpacity>      
+      </View>
+
+      <View style={
+        {    
+          height: 50,
+          width: 85,
+          fontSeize: 15,
+          margin: 8,
+          backgroundColor: colorTh(),
+          borderWidth: 1,
+          padding: 10,
+          justifyContent: 'center',
+          top: -418,
+          left: 312,
+          borderTopLeftRadius:8,
+          borderTopRightRadius:8,
+          borderBottomLeftRadius:8,
+          borderBottomRightRadius:8,
+        }}>
+        <TouchableOpacity style={styles.button} onPress={thToggle}>
+        <Text>Thursday</Text>
+        </TouchableOpacity>      
+      </View>
+
+      <View style={
+        {    
+          height: 50,
+          width: 85,
+          fontSeize: 15,
+          margin: 8,
+          backgroundColor: colorF(),
+          borderWidth: 1,
+          padding: 10,
+          justifyContent: 'center',
+          top: -418,
+          left: 50,
+          borderTopLeftRadius:8,
+          borderTopRightRadius:8,
+          borderBottomLeftRadius:8,
+          borderBottomRightRadius:8,
+        }}>
+        <TouchableOpacity style={styles.button} onPress={fToggle}>
+        <Text>Friday</Text>
+        </TouchableOpacity>      
+      </View>
+
+      <View style={
+        {    
+          height: 50,
+          width: 85,
+          fontSeize: 15,
+          margin: 8,
+          backgroundColor: colorS(),
+          borderWidth: 1,
+          padding: 10,
+          justifyContent: 'center',
+          top: -484,
+          left: 151,
+          borderTopLeftRadius:8,
+          borderTopRightRadius:8,
+          borderBottomLeftRadius:8,
+          borderBottomRightRadius:8,
+        }}>
+        <TouchableOpacity style={styles.button} onPress={sToggle}>
+        <Text>Saturday</Text>
+        </TouchableOpacity>      
+      </View>
+
+      <View style={
+        {    
+          height: 50,
+          width: 85,
+          fontSeize: 15,
+          margin: 8,
+          backgroundColor: colorSu(),
+          borderWidth: 1,
+          padding: 10,
+          justifyContent: 'center',
+          top: -550,
+          left: 252,
+          borderTopLeftRadius:8,
+          borderTopRightRadius:8,
+          borderBottomLeftRadius:8,
+          borderBottomRightRadius:8,
+        }}>
+        <TouchableOpacity style={styles.button} onPress={suToggle}>
+        <Text>Sunday</Text>
+        </TouchableOpacity>      
+      </View>
+
     </View>
   );
 }
@@ -498,7 +1590,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   input2: {
-    height: 50,
+    height: 45,
     fontSeize: 15,
     margin: 8,
     backgroundColor: '#03CEA4',
@@ -506,7 +1598,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   input3: {
-    height: 50,
+    height: 45,
     width: 180,
     fontSeize: 15,
     margin: 8,
@@ -515,7 +1607,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   input4: {
-    height: 50,
+    height: 45,
     width: 180,
     fontSeize: 15,
     margin: 8,
@@ -523,7 +1615,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     left: 215,
-    top: -66,
+    top: -60.5,
   },
   text1: {
     fontSize: 15,

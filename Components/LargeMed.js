@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View, borderColor} from 'react-native';
 
-export default function LargeMed(text){
+export default function LargeMed({text}){
     return(
         <View style={styles.header}>
-            <Text style={styles.title}>Large Medication</Text>
+            <Text style={styles.title}>{text}</Text>
         </View>
     )
 }
