@@ -1,6 +1,14 @@
 {
   "expo": {
     "name": "dr-in-a-box",
+    "plugins": [
+          "react-native-vision-camera",
+          {
+            "cameraPermissionText": "$(PRODUCT_NAME) needs access to your Camera."
+    
+          }
+      ]
+    },
     "slug": "dr-in-a-box",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -30,4 +38,3 @@
       "favicon": "./assets/favicon.png"
     }
   }
-}
