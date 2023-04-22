@@ -1,3 +1,4 @@
+import 'react-native-reanimated'
 import React, {useState} from 'react';
 import { Alert, SafeAreaView, StyleSheet, Text, View, TextInput,TouchableOpacity, Pressable} from 'react-native';
 import Button from './button';
@@ -26,6 +27,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { Colors } from './Components/colors';
 import PhotoButton from './PhotoButton';
 
+const newCameraPermission = await Camera.requestCameraPermission()
 function HomeScreen({navigation}) {
   return (
     <View style={styles.container}>
