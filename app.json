@@ -1,6 +1,9 @@
 {
   "expo": {
     "name": "dr-in-a-box",
+    "plugins": [
+      ]
+    },
     "slug": "dr-in-a-box",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -30,4 +33,3 @@
       "favicon": "./assets/favicon.png"
     }
   }
-}

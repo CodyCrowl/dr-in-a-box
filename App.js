@@ -1,9 +1,10 @@
-import 'react-native-reanimated'
+//import 'react-native-reanimated'
 import React, {useState} from 'react';
 import { Alert, SafeAreaView, StyleSheet, Text, View, TextInput,TouchableOpacity, Pressable} from 'react-native';
 import Button from './button';
 import Button2 from './button2';
 import Button3 from './button3';
+import Button3_1 from './button3_1';
 import Button4 from './button4';
 import Button5 from './button5';
 import Button6 from './button6';
@@ -26,16 +27,17 @@ import {BleManager} from 'react-native-ble-plx'
 import { ScrollView } from 'react-native-gesture-handler';
 import { Colors } from './Components/colors';
 import PhotoButton from './PhotoButton';
+import DHeader from './Components/DispenseHeaders';
 
-const newCameraPermission = await Camera.requestCameraPermission()
+//const newCameraPermission = await Camera.requestCameraPermission();
 function HomeScreen({navigation}) {
   return (
     <View style={styles.container}>
       <Header/>
       <Button text = 'Medications' onPress={() => navigation.navigate('Medications')}/>
       <Button2 text = 'Settings' onPress={() => navigation.navigate('Settings')}/>
-      <Button3 text = 'Dispense' onPress={(Alert)}/>
-      <PhotoButton text = 'Facial recognition' onPress={(Alert)}/>
+      <Button3 text = 'Dispense' onPress={() => navigation.navigate('DispenseW1')}/>
+      
     </View>
   );
 }
@@ -1523,6 +1525,46 @@ function Notes({route}) {
     </View>
   );
 }
+
+function DispenseW1({navigation}) {
+  return (
+    <View style={styles.container}>
+      <DHeader text = {"Dispense Warning 1"}/>
+      <Text style={styles.textW}>Please confirm that you haven't taken pills yet today</Text>
+      <Button3_1 text = 'Dispense' onPress={() => navigation.navigate('DispenseW2')}/>
+    </View>
+  );
+}
+function DispenseW2({navigation}) {
+  return (
+    <View style={styles.container}>
+      <DHeader text = {"Dispense Warning 2"}/>
+      <Text style={styles.textW}>Are you really sure?</Text>
+      <Button3_1 text = 'Dispense' onPress={() => navigation.navigate('DispenseW3')}/>
+    </View>
+  );
+}
+function DispenseW3({navigation}) {
+  return (
+    <View style={styles.container}>
+      <DHeader text = {"Dispense Warning 3"}/>
+      <Text style={styles.textW}>Are you absolutely sure?</Text>
+      <Button3_1 text = 'Dispense' onPress={() => navigation.navigate('Dispense')}/>
+    </View>
+  );
+}
+1
+function Dispense({navigation}) {
+  return (
+    <View style={styles.container}>
+      <DHeader text = {"Dispense"}/>
+      <Text style={styles.text2}>This is where it needs to Dispense granted bluetooth actually worked</Text>
+      
+    </View>
+  );
+}
+
+
 const Stack = createNativeStackNavigator();
 
 function App() {
@@ -1570,6 +1612,22 @@ function App() {
         <Stack.Screen name="Notes" 
         component={Notes} 
         options={{title: 'Notes'}}
+        />
+        <Stack.Screen name="DispenseW1" 
+        component={DispenseW1} 
+        options={{title: 'DispenseWarning'}}
+        />
+        <Stack.Screen name="DispenseW2" 
+        component={DispenseW2} 
+        options={{title: 'DispenseWarning'}}
+        />
+        <Stack.Screen name="DispenseW3" 
+        component={DispenseW3} 
+        options={{title: 'DispenseWarning'}}
+        />
+        <Stack.Screen name="Dispense" 
+        component={Dispense} 
+        options={{title: 'Dispense'}}
         />
 
       </Stack.Navigator>
@@ -1648,12 +1706,12 @@ const styles = StyleSheet.create({
     top: -70,
     left: 7
   },
-  text4: {
-    fontSize: 18,
+  textW:{
+    fontSize: 35,
     fontWeight: 'bold',
-    margin: 1,
-    //padding: 10,
-    top: -70,
-    left: 7
+    margin: 10,
+    textDecorationLine: 'underline',
+    textAlign: 'center',
+    justifyContent: 'center',
   },
 });

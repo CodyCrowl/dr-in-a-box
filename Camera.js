@@ -1,7 +1,7 @@
-function FacialRecognition() {
-    const devices = useCameraDevices('front-camera')
-    const device = devices.back
-    const isAppForeground = useIsAppForeground()
+/*function FacialRecognition() {
+    const devices = useCameraDevices('front-camera');
+    const device = devices.back;
+    const isAppForeground = useIsAppForeground();
   
     if (device == null) return <LoadingView />
     return (
@@ -30,4 +30,3 @@ function FacialRecognition() {
       />
     )
   }
-  
