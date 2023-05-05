@@ -28,6 +28,9 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { Colors } from './Components/colors';
 import PhotoButton from './PhotoButton';
 import DHeader from './Components/DispenseHeaders';
+import * as Permissions from 'expo-permissions';
+import { Camera } from 'expo';
+import * as FaceDetector from 'expo-face-detector';
 
 //const newCameraPermission = await Camera.requestCameraPermission();
 function HomeScreen({navigation}) {
@@ -37,7 +40,7 @@ function HomeScreen({navigation}) {
       <Button text = 'Medications' onPress={() => navigation.navigate('Medications')}/>
       <Button2 text = 'Settings' onPress={() => navigation.navigate('Settings')}/>
       <Button3 text = 'Dispense' onPress={() => navigation.navigate('DispenseW1')}/>
-      
+      <PhotoButton text = 'Dispense' onPress={() => navigation.navigate('Face')}/>
     </View>
   );
 }
@@ -1563,7 +1566,65 @@ function Dispense({navigation}) {
     </View>
   );
 }
+function Face() {
+  const [hasPermission, setHasPermission] = React.useState();
+  const [faceData, setFaceData] = React.useState([]);
 
+  React.useEffect(() => {
+    (async () => {
+      const {status} = await Camera.requestCameraPermissionsAsync();
+      setHasPermission(status === "granted");
+    })();
+  }, []);
+
+  if (hasPermission === false) {
+    return <Text>No access to camera</Text>;
+  }
+
+  function getFaceDataView() {
+    if (faceData.length === 0) {
+      return (
+        <View style={styles.faces}>
+          <Text style={styles.faceDesc}>No faces </Text>
+        </View>
+      );
+    } else {
+      return faceData.map((face, index) => {
+        const eyesShut = face.rightEyeOpenProbability < 0.4 && face.leftEyeOpenProbability < 0.4;
+        const winking = !eyesShut && (face.rightEyeOpenProbability < 0.4 || face.leftEyeOpenProbability < 0.4);
+        const smiling = face.smilingProbability > 0.7;
+        return (
+          <View style={styles.faces} key={index}>
+            <Text style={styles.faceDesc}>Eyes Shut: {eyesShut.toString()}</Text>
+            <Text style={styles.faceDesc}>Winking: {winking.toString()}</Text>
+            <Text style={styles.faceDesc}>Smiling: {smiling.toString()}</Text>
+          </View>
+        );
+      });
+    }
+  }
+
+  const handleFacesDetected = ({ faces }) => {
+    setFaceData(faces);
+    console.log(faces);
+  }
+
+  return (
+    <Camera 
+      type={Camera.Constants.Type.front}
+      style={styles.camera}
+      onFacesDetected={handleFacesDetected}
+      faceDetectorSettings={{
+        mode: FaceDetector.FaceDetectorMode.fast,
+        detectLandmarks: FaceDetector.FaceDetectorLandmarks.none,
+        runClassifications: FaceDetector.FaceDetectorClassifications.none,
+        minDetectionInterval: 100,
+        tracking: true
+      }}>
+      {getFaceDataView()}
+    </Camera>
+  );
+}
 
 const Stack = createNativeStackNavigator();
 
@@ -1628,6 +1689,10 @@ function App() {
         <Stack.Screen name="Dispense" 
         component={Dispense} 
         options={{title: 'Dispense'}}
+        />
+        <Stack.Screen name="Face" 
+        component={Face} 
+        options={{title: 'Face'}}
         />
 
       </Stack.Navigator>
@@ -1714,4 +1779,19 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     justifyContent: 'center',
   },
+  camera: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  faces: {
+    backgroundColor: '#ffffff',
+    alignSelf: 'stretch',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: 16
+  },
+  faceDesc: {
+    fontSize: 20
+  }
 });

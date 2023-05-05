@@ -1,9 +1,26 @@
 import { Permissions, Camera, FaceDetector, } from "expo";
 
-async function componentWillMount() 
+async function componentWillMount(){
     const { status } =await Permissions.askAsync(Permissions.CAMERA);
     this.setState({hasCameraPermission:status==='granted'});
+}
+snap = async (recognize) => {
+  try {
+      if (this.camera) {
+          let photo = await this.camera.takePictureAsync({ base64: true });
+          if(!faceDetected) {
+              alert('No face detected!');
+              return;
+          }
 
+          const userId = makeId();
+          const { base64 } = photo;
+          this[recognize ? 'recognize' : 'enroll']({ userId, base64 });
+      }
+  } catch (e) {
+      console.log('error on snap: ', e)
+  }
+};
     return (
       <View style={styles.container}>
       <Camera
@@ -15,7 +32,7 @@ async function componentWillMount()
         mode: FaceDetector.Constants.Mode.fast,
         detectLandmarks: FaceDetector.Constants.Mode.none,
         runClassifications: FaceDetector.Constants.Mode.none,
-}}>
+    }}>
 <TouchableOpacity
     style={{
         flex: 1,
@@ -46,20 +63,4 @@ async function componentWillMount()
 </View>
 );
 
-snap = async (recognize) => {
-  try {
-      if (this.camera) {
-          let photo = await this.camera.takePictureAsync({ base64: true });
-          if(!faceDetected) {
-              alert('No face detected!');
-              return;
-          }
 
-          const userId = makeId();
-          const { base64 } = photo;
-          this[recognize ? 'recognize' : 'enroll']({ userId, base64 });
-      }
-  } catch (e) {
-      console.log('error on snap: ', e)
-  }
-};
