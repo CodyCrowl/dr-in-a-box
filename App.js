@@ -31,6 +31,7 @@ import DHeader from './Components/DispenseHeaders';
 import * as Permissions from 'expo-permissions';
 import { Camera } from 'expo';
 import * as FaceDetector from 'expo-face-detector';
+RNCamera
 
 //const newCameraPermission = await Camera.requestCameraPermission();
 function HomeScreen({navigation}) {
