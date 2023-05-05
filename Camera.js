@@ -22,7 +22,7 @@ export default function App() {
     if (faceData.length === 0) {
       return (
         <View style={styles.faces}>
-          <Text style={styles.faceDesc}>No faces :(</Text>
+          <Text style={styles.faceDesc}>No faces </Text>
         </View>
       );
     } else {
