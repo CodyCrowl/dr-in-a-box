@@ -13,7 +13,7 @@ export default function Button5({text, onPress}){
 
 const styles = StyleSheet.create({
     button: {
-        width: 365,
+        width: '95%',
         height: 100,
         borderTopLeftRadius:20,
         borderTopRightRadius:20,
@@ -21,9 +21,8 @@ const styles = StyleSheet.create({
         borderBottomRightRadius:20,
         backgroundColor: '#03CEA4',
         justifyContent: 'center',
-        top: 30,
-        left: 25,
-        right: 25,
+        top: 40,
+        left: 10,
 
     },
     buttonText: {

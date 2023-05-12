@@ -21,12 +21,14 @@ const styles = StyleSheet.create({
         borderBottomRightRadius:20,
         backgroundColor: '#03CEA4',
         justifyContent: 'center',
-        top: 420,
-        left: 25,
+        top: 180,
+        left: -90,
+        alignSelf: 'center',
 
     },
     buttonText: {
         color: 'black',
+        //alignItems: 'center',
         fontWeight: 'bold',
         textTransform: 'uppercase',
         fontSize: 22, 

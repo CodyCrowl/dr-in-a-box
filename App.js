@@ -31,17 +31,19 @@ import DHeader from './Components/DispenseHeaders';
 import * as Permissions from 'expo-permissions';
 import { Camera } from 'expo';
 import * as FaceDetector from 'expo-face-detector';
-RNCamera
+import CustomInput from './CustomInput';
+import CustomButton from './CustonButton';
 
 //const newCameraPermission = await Camera.requestCameraPermission();
 function HomeScreen({navigation}) {
   return (
     <View style={styles.container}>
       <Header/>
+      <Button3 text = 'Dispense' onPress={() => navigation.navigate('DispenseW1')}/>
       <Button text = 'Medications' onPress={() => navigation.navigate('Medications')}/>
       <Button2 text = 'Settings' onPress={() => navigation.navigate('Settings')}/>
-      <Button3 text = 'Dispense' onPress={() => navigation.navigate('DispenseW1')}/>
-      <PhotoButton text = 'Dispense' onPress={() => navigation.navigate('Face')}/>
+      
+      
     </View>
   );
 }
@@ -184,9 +186,6 @@ function MedA({navigation}) {
 
   function minutefix(time)
   { 
-    if(time > "59"){
-      return "59";
-    }
     if(time <= "0"){
       return "00";
     }
@@ -216,6 +215,9 @@ function MedA({navigation}) {
     }
     if(time == 9){
       return "09";
+    }
+    if(time > "59"){
+      return "59";
     }
     else{
       return time;
@@ -376,7 +378,7 @@ function MedA({navigation}) {
 
       <View style={
         {    
-          height: 30,
+          height: 50,
           fontSeize: 15,
           margin: 85,
           backgroundColor: '#03CEA4',
@@ -391,7 +393,7 @@ function MedA({navigation}) {
           justifyContent: 'center',
           textDecorationLine: 'underline'
           }}>
-          Days to Dispense. Click all that apply
+          Days to Dispense.                   Click all that apply
         </Text>
         
       </View>
@@ -399,12 +401,12 @@ function MedA({navigation}) {
       <View style={
         {    
           height: 50,
-          width: 85,
+          width: 70,
           fontSeize: 15,
           margin: 8,
           backgroundColor: colorM(),
           borderWidth: 1,
-          padding: 10,
+          padding: 5,
           justifyContent: 'center',
           top: -220,
           borderTopLeftRadius:8,
@@ -420,7 +422,7 @@ function MedA({navigation}) {
       <View style={
         {    
           height: 50,
-          width: 85,
+          width: 80,
           fontSeize: 15,
           margin: 8,
           backgroundColor: colorT(),
@@ -428,7 +430,7 @@ function MedA({navigation}) {
           padding: 10,
           justifyContent: 'center',
           top: -286,
-          left: 101,
+          left: 81,
           borderTopLeftRadius:8,
           borderTopRightRadius:8,
           borderBottomLeftRadius:8,
@@ -442,15 +444,15 @@ function MedA({navigation}) {
       <View style={
         {    
           height: 50,
-          width: 94,
+          width: 85,
           fontSeize: 15,
           margin: 8,
           backgroundColor: colorW(),
           borderWidth: 1,
-          padding: 10,
+          padding: 5,
           justifyContent: 'center',
           top: -352,
-          left: 202,
+          left: 172,
           borderTopLeftRadius:8,
           borderTopRightRadius:8,
           borderBottomLeftRadius:8,
@@ -464,15 +466,15 @@ function MedA({navigation}) {
       <View style={
         {    
           height: 50,
-          width: 85,
+          width: 75,
           fontSeize: 15,
           margin: 8,
           backgroundColor: colorTh(),
           borderWidth: 1,
-          padding: 10,
+          padding: 5,
           justifyContent: 'center',
           top: -418,
-          left: 312,
+          left: 267,
           borderTopLeftRadius:8,
           borderTopRightRadius:8,
           borderBottomLeftRadius:8,
@@ -486,15 +488,15 @@ function MedA({navigation}) {
       <View style={
         {    
           height: 50,
-          width: 85,
+          width: 70,
           fontSeize: 15,
           margin: 8,
           backgroundColor: colorF(),
           borderWidth: 1,
-          padding: 10,
+          padding: 14,
           justifyContent: 'center',
           top: -418,
-          left: 50,
+          left: 40,
           borderTopLeftRadius:8,
           borderTopRightRadius:8,
           borderBottomLeftRadius:8,
@@ -513,10 +515,10 @@ function MedA({navigation}) {
           margin: 8,
           backgroundColor: colorS(),
           borderWidth: 1,
-          padding: 10,
+          padding: 13,
           justifyContent: 'center',
           top: -484,
-          left: 151,
+          left: 126,
           borderTopLeftRadius:8,
           borderTopRightRadius:8,
           borderBottomLeftRadius:8,
@@ -535,10 +537,10 @@ function MedA({navigation}) {
           margin: 8,
           backgroundColor: colorSu(),
           borderWidth: 1,
-          padding: 10,
+          padding: 15,
           justifyContent: 'center',
           top: -550,
-          left: 252,
+          left: 224,
           borderTopLeftRadius:8,
           borderTopRightRadius:8,
           borderBottomLeftRadius:8,
@@ -848,7 +850,7 @@ function MedB({navigation}) {
 
       <View style={
         {    
-          height: 30,
+          height: 50,
           fontSeize: 15,
           margin: 85,
           backgroundColor: '#03CEA4',
@@ -863,7 +865,7 @@ function MedB({navigation}) {
           justifyContent: 'center',
           textDecorationLine: 'underline'
           }}>
-          Days to Dispense. Click all that apply
+          Days to Dispense.                   Click all that apply
         </Text>
         
       </View>
@@ -871,12 +873,12 @@ function MedB({navigation}) {
       <View style={
         {    
           height: 50,
-          width: 85,
+          width: 70,
           fontSeize: 15,
           margin: 8,
           backgroundColor: colorM(),
           borderWidth: 1,
-          padding: 10,
+          padding: 5,
           justifyContent: 'center',
           top: -220,
           borderTopLeftRadius:8,
@@ -892,7 +894,7 @@ function MedB({navigation}) {
       <View style={
         {    
           height: 50,
-          width: 85,
+          width: 80,
           fontSeize: 15,
           margin: 8,
           backgroundColor: colorT(),
@@ -900,7 +902,7 @@ function MedB({navigation}) {
           padding: 10,
           justifyContent: 'center',
           top: -286,
-          left: 101,
+          left: 81,
           borderTopLeftRadius:8,
           borderTopRightRadius:8,
           borderBottomLeftRadius:8,
@@ -914,15 +916,15 @@ function MedB({navigation}) {
       <View style={
         {    
           height: 50,
-          width: 94,
+          width: 85,
           fontSeize: 15,
           margin: 8,
           backgroundColor: colorW(),
           borderWidth: 1,
-          padding: 10,
+          padding: 5,
           justifyContent: 'center',
           top: -352,
-          left: 202,
+          left: 172,
           borderTopLeftRadius:8,
           borderTopRightRadius:8,
           borderBottomLeftRadius:8,
@@ -936,15 +938,15 @@ function MedB({navigation}) {
       <View style={
         {    
           height: 50,
-          width: 85,
+          width: 75,
           fontSeize: 15,
           margin: 8,
           backgroundColor: colorTh(),
           borderWidth: 1,
-          padding: 10,
+          padding: 5,
           justifyContent: 'center',
           top: -418,
-          left: 312,
+          left: 267,
           borderTopLeftRadius:8,
           borderTopRightRadius:8,
           borderBottomLeftRadius:8,
@@ -958,15 +960,15 @@ function MedB({navigation}) {
       <View style={
         {    
           height: 50,
-          width: 85,
+          width: 70,
           fontSeize: 15,
           margin: 8,
           backgroundColor: colorF(),
           borderWidth: 1,
-          padding: 10,
+          padding: 14,
           justifyContent: 'center',
           top: -418,
-          left: 50,
+          left: 40,
           borderTopLeftRadius:8,
           borderTopRightRadius:8,
           borderBottomLeftRadius:8,
@@ -985,10 +987,10 @@ function MedB({navigation}) {
           margin: 8,
           backgroundColor: colorS(),
           borderWidth: 1,
-          padding: 10,
+          padding: 13,
           justifyContent: 'center',
           top: -484,
-          left: 151,
+          left: 126,
           borderTopLeftRadius:8,
           borderTopRightRadius:8,
           borderBottomLeftRadius:8,
@@ -1007,10 +1009,10 @@ function MedB({navigation}) {
           margin: 8,
           backgroundColor: colorSu(),
           borderWidth: 1,
-          padding: 10,
+          padding: 15,
           justifyContent: 'center',
           top: -550,
-          left: 252,
+          left: 224,
           borderTopLeftRadius:8,
           borderTopRightRadius:8,
           borderBottomLeftRadius:8,
@@ -1320,7 +1322,7 @@ function MedC({navigation}) {
 
       <View style={
         {    
-          height: 30,
+          height: 50,
           fontSeize: 15,
           margin: 85,
           backgroundColor: '#03CEA4',
@@ -1335,7 +1337,7 @@ function MedC({navigation}) {
           justifyContent: 'center',
           textDecorationLine: 'underline'
           }}>
-          Days to Dispense. Click all that apply
+          Days to Dispense.                   Click all that apply
         </Text>
         
       </View>
@@ -1343,12 +1345,12 @@ function MedC({navigation}) {
       <View style={
         {    
           height: 50,
-          width: 85,
+          width: 70,
           fontSeize: 15,
           margin: 8,
           backgroundColor: colorM(),
           borderWidth: 1,
-          padding: 10,
+          padding: 5,
           justifyContent: 'center',
           top: -220,
           borderTopLeftRadius:8,
@@ -1364,7 +1366,7 @@ function MedC({navigation}) {
       <View style={
         {    
           height: 50,
-          width: 85,
+          width: 80,
           fontSeize: 15,
           margin: 8,
           backgroundColor: colorT(),
@@ -1372,7 +1374,7 @@ function MedC({navigation}) {
           padding: 10,
           justifyContent: 'center',
           top: -286,
-          left: 101,
+          left: 81,
           borderTopLeftRadius:8,
           borderTopRightRadius:8,
           borderBottomLeftRadius:8,
@@ -1386,15 +1388,15 @@ function MedC({navigation}) {
       <View style={
         {    
           height: 50,
-          width: 94,
+          width: 85,
           fontSeize: 15,
           margin: 8,
           backgroundColor: colorW(),
           borderWidth: 1,
-          padding: 10,
+          padding: 5,
           justifyContent: 'center',
           top: -352,
-          left: 202,
+          left: 172,
           borderTopLeftRadius:8,
           borderTopRightRadius:8,
           borderBottomLeftRadius:8,
@@ -1408,15 +1410,15 @@ function MedC({navigation}) {
       <View style={
         {    
           height: 50,
-          width: 85,
+          width: 75,
           fontSeize: 15,
           margin: 8,
           backgroundColor: colorTh(),
           borderWidth: 1,
-          padding: 10,
+          padding: 5,
           justifyContent: 'center',
           top: -418,
-          left: 312,
+          left: 267,
           borderTopLeftRadius:8,
           borderTopRightRadius:8,
           borderBottomLeftRadius:8,
@@ -1430,15 +1432,15 @@ function MedC({navigation}) {
       <View style={
         {    
           height: 50,
-          width: 85,
+          width: 70,
           fontSeize: 15,
           margin: 8,
           backgroundColor: colorF(),
           borderWidth: 1,
-          padding: 10,
+          padding: 14,
           justifyContent: 'center',
           top: -418,
-          left: 50,
+          left: 40,
           borderTopLeftRadius:8,
           borderTopRightRadius:8,
           borderBottomLeftRadius:8,
@@ -1457,10 +1459,10 @@ function MedC({navigation}) {
           margin: 8,
           backgroundColor: colorS(),
           borderWidth: 1,
-          padding: 10,
+          padding: 13,
           justifyContent: 'center',
           top: -484,
-          left: 151,
+          left: 126,
           borderTopLeftRadius:8,
           borderTopRightRadius:8,
           borderBottomLeftRadius:8,
@@ -1479,10 +1481,10 @@ function MedC({navigation}) {
           margin: 8,
           backgroundColor: colorSu(),
           borderWidth: 1,
-          padding: 10,
+          padding: 15,
           justifyContent: 'center',
           top: -550,
-          left: 252,
+          left: 224,
           borderTopLeftRadius:8,
           borderTopRightRadius:8,
           borderBottomLeftRadius:8,
@@ -1549,11 +1551,39 @@ function DispenseW2({navigation}) {
   );
 }
 function DispenseW3({navigation}) {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const onSignInPressed = () => {
+    if(username == 'electromen' && password == 'sacstate')
+    {
+      navigation.navigate('Dispense');
+    }
+    else{
+      console.warn('Incorrect Username or Password');
+    }
+    
+  }
+
   return (
     <View style={styles.container}>
       <DHeader text = {"Dispense Warning 3"}/>
-      <Text style={styles.textW}>Are you absolutely sure?</Text>
-      <Button3_1 text = 'Dispense' onPress={() => navigation.navigate('Dispense')}/>
+      <Text style={styles.textW}>Please sign in before Dispensing</Text>
+      <CustomInput 
+            placeholder="Username" 
+            value={username} 
+            setValue={setUsername} 
+      />
+      <CustomInput 
+            placeholder="Password"
+            value={password}
+            setValue={setPassword}
+            secureTextEntry={true}
+      />
+      <CustomButton
+            text="Sign In"
+            onPress={onSignInPressed}
+      />
     </View>
   );
 }
@@ -1565,65 +1595,6 @@ function Dispense({navigation}) {
       <Text style={styles.text2}>This is where it needs to Dispense granted bluetooth actually worked</Text>
       
     </View>
-  );
-}
-function Face() {
-  const [hasPermission, setHasPermission] = React.useState();
-  const [faceData, setFaceData] = React.useState([]);
-
-  React.useEffect(() => {
-    (async () => {
-      const {status} = await Camera.requestCameraPermissionsAsync();
-      setHasPermission(status === "granted");
-    })();
-  }, []);
-
-  if (hasPermission === false) {
-    return <Text>No access to camera</Text>;
-  }
-
-  function getFaceDataView() {
-    if (faceData.length === 0) {
-      return (
-        <View style={styles.faces}>
-          <Text style={styles.faceDesc}>No faces </Text>
-        </View>
-      );
-    } else {
-      return faceData.map((face, index) => {
-        const eyesShut = face.rightEyeOpenProbability < 0.4 && face.leftEyeOpenProbability < 0.4;
-        const winking = !eyesShut && (face.rightEyeOpenProbability < 0.4 || face.leftEyeOpenProbability < 0.4);
-        const smiling = face.smilingProbability > 0.7;
-        return (
-          <View style={styles.faces} key={index}>
-            <Text style={styles.faceDesc}>Eyes Shut: {eyesShut.toString()}</Text>
-            <Text style={styles.faceDesc}>Winking: {winking.toString()}</Text>
-            <Text style={styles.faceDesc}>Smiling: {smiling.toString()}</Text>
-          </View>
-        );
-      });
-    }
-  }
-
-  const handleFacesDetected = ({ faces }) => {
-    setFaceData(faces);
-    console.log(faces);
-  }
-
-  return (
-    <Camera 
-      type={Camera.Constants.Type.front}
-      style={styles.camera}
-      onFacesDetected={handleFacesDetected}
-      faceDetectorSettings={{
-        mode: FaceDetector.FaceDetectorMode.fast,
-        detectLandmarks: FaceDetector.FaceDetectorLandmarks.none,
-        runClassifications: FaceDetector.FaceDetectorClassifications.none,
-        minDetectionInterval: 100,
-        tracking: true
-      }}>
-      {getFaceDataView()}
-    </Camera>
   );
 }
 
@@ -1691,10 +1662,6 @@ function App() {
         component={Dispense} 
         options={{title: 'Dispense'}}
         />
-        <Stack.Screen name="Face" 
-        component={Face} 
-        options={{title: 'Face'}}
-        />
 
       </Stack.Navigator>
     </NavigationContainer>
@@ -1725,7 +1692,7 @@ const styles = StyleSheet.create({
   },
   input3: {
     height: 45,
-    width: 180,
+    width: 160,
     fontSeize: 15,
     margin: 8,
     backgroundColor: '#03CEA4',
@@ -1734,13 +1701,13 @@ const styles = StyleSheet.create({
   },
   input4: {
     height: 45,
-    width: 180,
+    width: 160,
     fontSeize: 15,
     margin: 8,
     backgroundColor: '#03CEA4',
     borderWidth: 1,
     padding: 10,
-    left: 215,
+    left: 183,
     top: -60.5,
   },
   text1: {
@@ -1794,5 +1761,11 @@ const styles = StyleSheet.create({
   },
   faceDesc: {
     fontSize: 20
-  }
+  },
+  logo: {
+    width: '100%',
+    maxWidth: 500,
+    maxHeight: 500,
+  },
+
 });

@@ -21,10 +21,9 @@ const styles = StyleSheet.create({
         borderBottomRightRadius:125,
         backgroundColor: '#03CEA4',
         justifyContent: 'center',
-        position: 'relative',
-        left: 80,
-        top: -20,
-
+        
+        top: 80,
+        alignSelf: 'center',
     },
     buttonText: {
         color: 'black',

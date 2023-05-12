@@ -22,9 +22,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#03CEA4',
         justifyContent: 'center',
         position: 'relative',
-        left: 80,
+        
         top: 20,
-
+        alignSelf: 'center',
     },
     buttonText: {
         color: 'black',

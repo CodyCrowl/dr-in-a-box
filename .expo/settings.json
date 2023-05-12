@@ -1,7 +1,7 @@
 {
   "urlRandomness": "MDakS5g",
-  "dev": false,
-  "minify": true,
+  "dev": true,
+  "minify": false,
   "https": false,
   "hostType": "lan",
   "lanType": "ip",

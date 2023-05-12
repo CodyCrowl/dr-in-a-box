@@ -13,8 +13,8 @@ export default function PhotoButton({text, onPress}){
 
 const styles = StyleSheet.create({
     button: {
-        width: 365,
-        height: 100,
+        width: 300,
+        height: 50,
         borderTopLeftRadius:20,
         borderTopRightRadius:20,
         borderBottomLeftRadius:20,
